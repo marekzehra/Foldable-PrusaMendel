@@ -1,22 +1,43 @@
-openscad -s metric-prusa/bar-clamp.stl source/bar-clamp.scad
-openscad -s metric-prusa/bearing-guide.stl source/bearing-guide.scad
-openscad -s metric-prusa/belt-clamp-nut-holder.stl source/belt-clamp-nut-holder.scad
-openscad -s metric-prusa/belt-clamp.stl source/belt-clamp.scad
-openscad -s metric-prusa/coupling.stl source/coupling.scad
-openscad -s metric-prusa/endstop-holder.stl source/endstop-holder.scad
-openscad -s metric-prusa/frame-vertex.stl -D 'basefoot=false' source/frame-vertex.scad
-openscad -s metric-prusa/frame-vertex-foot.stl source/frame-vertex.scad
-openscad -s metric-prusa/printable-bushing.stl source/printable-bushing.scad
-openscad -s metric-prusa/printable-bushing-lm8uu.stl source/printable-bushing-lm8uu.scad
-openscad -s metric-prusa/pulley.stl source/pulley.scad
-openscad -s metric-prusa/rod-clamp.stl source/rod-clamp.scad
-openscad -s metric-prusa/sanguinololu-holder.stl source/sanguinololu-holder.scad
-openscad -s metric-prusa/wade.stl source/wade.scad
-openscad -s metric-prusa/wade-big.stl source/wade-big.scad
-openscad -s metric-prusa/wade-small.stl source/wade-small.scad
-openscad -s metric-prusa/x-carriage.stl source/x-carriage.scad
-openscad -s metric-prusa/x-end-idler.stl source/x-end-idler.scad
-openscad -s metric-prusa/x-end-motor.stl source/x-end-motor.scad
-openscad -s metric-prusa/y-bushing.stl source/y-bushing.scad
-openscad -s metric-prusa/ybrac-t.stl source/ybrac-t.scad
-openscad -s metric-prusa/z-motor-mount.stl source/z-motor-mount.scad
+source_folder="source"
+output_folder="metric-prusa"
+files_to_generate=(
+	bar-clamp 
+	bearing-guide 
+	belt-clamp-nut-holder 
+	belt-clamp coupling 
+	endstop-holder 
+	frame-vertex 
+	printable-bushing-lm8uu 
+	pulley 
+	rod-clamp 
+	sanguinololu-holder 
+	wade 
+	wade-big 
+	wade-small 
+	x-carriage 
+	x-end-idler 
+	x-end-motor 
+	y-bushing 
+	ybrac-t 
+	z-motor-mount
+	)
+
+rm -f metric-prusa/*.stl
+
+echo "Generating:"
+
+for file in ${files_to_generate[*]}
+do
+	echo -ne "$output_folder/$file.stl...";
+	openscad -o $output_folder/$file.stl $source_folder/$file.scad
+	echo "DONE"
+
+	if [ "$file" == "frame-vertex" ];
+	then
+		echo -ne "metric-prusa/frame-vertex-foot.stl..."
+		openscad -o $output_folder/$file-foot.stl -D 'basefoot=true' $source_folder/$file.scad
+		echo "DONE"
+	fi
+done
+
+exit 0

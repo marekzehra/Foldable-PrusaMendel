@@ -18,6 +18,7 @@ include <metric.scad>;
 // CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM
 
 thin_wall = 3;
+fanrot = 0;
 
 
 // Linear bearing version
@@ -32,10 +33,10 @@ lme8uu = false;
 
 // RODS
 
-// threaded_rod_diameter = 0;
-// threaded_rod_diameter_horizontal = 0;
-// smooth_bar_diameter = 0;
-// smooth_bar_diameter_horizontal = 0;
+threaded_rod_diameter = 8.2;
+threaded_rod_diameter_horizontal = 8.2;
+smooth_bar_diameter = 8.1;
+smooth_bar_diameter_horizontal = 8.1;
 
 // Nuts and bolts
 
@@ -52,7 +53,6 @@ lme8uu = false;
 
 // bushing_core_diameter = smooth_bar_diameter;
 // bushing_material_thickness = 0;
-
 
 ///counted stuff
 m3_nut_diameter_bigger = ((m3_nut_diameter  / 2) / cos (180 / 6))*2;

@@ -1,23 +1,44 @@
-cp metric-prusa/bar-clamp.stl  metric-prusa-lm8uu/bar-clamp.stl 
-cp metric-prusa/bearing-guide.stl metric-prusa-lm8uu/bearing-guide.stl 
-cp metric-prusa/belt-clamp-nut-holder.stl metric-prusa-lm8uu/belt-clamp-nut-holder.stl 
-cp metric-prusa/belt-clamp.stl  metric-prusa-lm8uu/belt-clamp.stl 
-cp metric-prusa/coupling.stl metric-prusa-lm8uu/coupling.stl 
-cp metric-prusa/endstop-holder.stl metric-prusa-lm8uu/endstop-holder.stl 
-cp metric-prusa/frame-vertex.stl metric-prusa-lm8uu/frame-vertex.stl 
-cp metric-prusa/frame-vertex-foot.stl metric-prusa-lm8uu/frame-vertex-foot.stl 
-cp metric-prusa/printable-bushing.stl metric-prusa-lm8uu/printable-bushing.stl 
-cp metric-prusa/printable-bushing-lm8uu.stl metric-prusa-lm8uu/printable-bushing-lm8uu.stl
-cp metric-prusa/pulley.stl metric-prusa-lm8uu/pulley.stl 
-cp metric-prusa/rod-clamp.stl metric-prusa-lm8uu/rod-clamp.stl 
-cp metric-prusa/sanguinololu-holder.stl metric-prusa-lm8uu/sanguinololu-holder.stl 
-cp metric-prusa/wade.stl metric-prusa-lm8uu/wade.stl 
-cp metric-prusa/wade-big.stl metric-prusa-lm8uu/wade-big.stl
-cp metric-prusa/wade-small.stl metric-prusa-lm8uu/wade-small.stl
-cp metric-prusa/ybrac-t.stl metric-prusa-lm8uu/ybrac-t.stl 
-cp metric-prusa/z-motor-mount.stl metric-prusa-lm8uu/z-motor-mount.stl 
+source_dir="source"
+metric_dir="metric-prusa"
+dest_dir="metric-prusa-lm8uu"
 
-openscad -s metric-prusa-lm8uu/x-end-idler.stl -D 'linear=true;lme8uu=false' source/x-end-idler.scad
-openscad -s metric-prusa-lm8uu/x-end-motor.stl -D 'linear=true;lme8uu=false' source/x-end-motor.scad
-openscad -s metric-prusa-lm8uu/x-carriage.stl -D 'linear=true;lme8uu=false' source/x-carriage.scad
-openscad -s metric-prusa-lm8uu/y-bushing.stl -D 'linear=true;lme8uu=false' source/y-bushing.scad
+files_to_copy=(
+	bar-clamp
+	bearing-guide
+	belt-clamp-nut-holder
+	belt-clamp
+	coupling
+	endstop-holder
+	frame-vertex
+	frame-vertex-foot
+	pulley
+	rod-clamp
+	sanguinololu-holder
+	wade
+	wade-big
+	wade-small
+	ybrac-t
+	z-motor-mount
+	)
+	
+files_to_generate=(
+	printable-bushing-lm8uu
+	x-end-idler
+	x-end-motor
+	x-carriage
+	y-bushing
+	)
+	
+rm -f $dest_dir/*.stl
+
+for file in ${files_to_copy[*]}
+do
+	echo -en "Copying $file.stl..."
+	cp $metric_dir/$file.stl $dest_dir/$file.stl && echo "DONE"	
+done
+
+for file in ${files_to_generate[*]}
+do
+	echo -en "Generating $file.stl..."
+	openscad -o $dest_dir/$file.stl -D 'linear=true;lme8uu=false' $source_dir/$file.scad && echo "DONE"
+done
