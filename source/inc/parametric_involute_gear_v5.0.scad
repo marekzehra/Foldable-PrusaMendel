@@ -103,7 +103,7 @@ module bevel_gear (
 	pitch_apex = sqrt (pow (cone_distance, 2) - pow (outside_pitch_radius, 2));
 	pitch_angle = asin (outside_pitch_radius/cone_distance);
 
-	echo ("Num Teeth:", number_of_teeth, " Pitch Angle:", pitch_angle);
+	//echo ("Num Teeth:", number_of_teeth, " Pitch Angle:", pitch_angle);
 
 	finish = (finish != -1) ? finish : (pitch_angle < 45) ? bevel_gear_flat : bevel_gear_back_cone;
 
@@ -306,7 +306,7 @@ module gear (
 	// Pitch diameter: Diameter of pitch circle.
 	pitch_diameter  =  number_of_teeth * circular_pitch / 180;
 	pitch_radius = pitch_diameter/2;
-	echo ("Teeth:", number_of_teeth, " Pitch radius:", pitch_radius);
+	//echo ("Teeth:", number_of_teeth, " Pitch radius:", pitch_radius);
 
 	// Base Circle
 	base_radius = pitch_radius*cos(pressure_angle);
