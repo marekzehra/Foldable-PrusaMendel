@@ -18,6 +18,7 @@ include <configuration.scad>
  * @using 2 m4x25
  */
 
+
 snap_in_mount = false;
 use <bushing.scad>
 
@@ -35,10 +36,11 @@ union(){
 			difference(){
 				union(){
 					//Base block
-						translate(v = [15, 0, 0])cube(size = [35,50,5], center = true);
-						translate(v = [0, 18.5, 0]) cube(size = [35,20,5], center = true);
+						translate(v = [15, 0, 0])cube(size = [35,85,5], center = true);
+						translate(v = [0, 18.5, 0]) cube(size = [35,48,5], center = true);
 						translate(v = [-2.4, -6, 0]) rotate(a=[0,0,15]) cylinder(h = 5, r=35, $fn=5, center=true);
-						translate(v = [0, -31, 0]) cylinder(h = 5, r=m4_nut_diameter/2+2, $fn=6, center=true);	
+						translate(v = [0, -31, 0]) cylinder(h = 5, r=m4_nut_diameter/2+2, $fn=6, center=true);
+
 					//Nut holder base - extruder
 					
 					if(linear_bearings){
@@ -111,7 +113,7 @@ union(){
 						}	
 					}
 					//removing some mass	
-					translate(v = [0, 36, 0]) cylinder(h = 9, r=14, $fn=6, center=true);	
+					//translate(v = [0, 36, 0]) cylinder(h = 9, r=14, $fn=6, center=true);	
 		
 					// Hotend hole
 					translate(v = [0, -6, 0]) cylinder(h = 20, r=20, $fn=20, center=true);
@@ -155,8 +157,8 @@ if(linear_bearings){
 		translate(v = [25.01,-29.81,0]) cut_corners(true,true,false,false);
 		translate(v = [0, -6, 0]) cylinder(h = 60, r=20, $fn=20, center=true);
 	}
-	translate(v = [25.01,28.01,0])cut_corners(false,false,true, true);
-	translate(v = [-25.01,20.51,0])cut_corners(false,false,true, true);
+	translate(v = [25.01,28.01,0])cut_corners(false,false,true, false);
+	translate(v = [-25.01,20.51,0])cut_corners(false,false,false, true);
 }else{
 translate(v = [25.01,-30.01,5.01])standart_bushing();
 translate(v = [-25.01,-30.01,5.01])standart_bushing();
@@ -166,7 +168,55 @@ translate(v = [-25.01,30.01,5.01])standart_bushing();
 }
 }
 
+fan_hole_separation=32; // check
+fan_support_block=11;
+fan_trap_width=3;
+fan_support_thickness=11;
+fan_diameter=36;
+fan_hole_height=5.5;
 
-xcarriage(linear);
+module fan_mount() 
+{
+	difference()
+	{
+		union ()
+		{
+			translate([0,0,fan_support_block/4])
+			cube([fan_hole_separation+fan_support_block,fan_support_thickness,fan_support_block/2],center=true);
+			
+			for (i=[-1,1])
+			translate([i*fan_hole_separation/2,0,fan_support_block/2])
+			rotate([90,0,0])
+			cylinder(r=fan_support_block/2,h=fan_support_block,center=true,$fn=20);
+			
+			translate([0,0,fan_support_block/2])
+			cube([fan_hole_separation,fan_support_thickness,fan_support_block],center=true);
+			translate([0,6,0])
+			cube([fan_hole_separation+fan_support_block,fan_support_thickness+12,0],center=true);
+		}
+		for(i=[-1,1])
+		{
+			translate([i*fan_hole_separation/2,0,fan_hole_height])
+			{
+				translate([0,fan_support_block*1/3,0])
+				rotate([90,0,0])
+				rotate(180/8)
+				cylinder(r=m3_diameter/2,h=(fan_support_thickness+2),center=true,$fn=8);
+				translate([0,0,0])
+				rotate([90,0,0])
+				rotate([0,0,180/6])
+				cylinder(r=(m3_nut_diameter-0.5)/2,h=fan_trap_width,center=true,$fn=6);
+				color([1,0,0])
+				translate([0,0,-(fan_hole_height+1)/2])
+				cube([(m3_nut_diameter-0.5)*cos(30),fan_trap_width,fan_hole_height+1],center=true);
+			}
+		}
+		translate([0,0,fan_hole_separation/2+fan_hole_height])
+		rotate([-90,0,0])
+		cylinder(r=fan_diameter/2,h=fan_support_thickness+2,center=true);
+	}
+}
 
-
+//xcarriage(linear);
+xcarriage(true);
+translate([0,46.5,0])fan_mount();

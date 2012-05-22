@@ -21,12 +21,28 @@ TARGETS = \
 	z-motor-mount.stl
 
 STL_DIR=metric-prusa/
+STL_LM8UU_DIR=metric-prusa-lm8uu/
 SRC_DIR=source/
 
-all: $(addprefix $(STL_DIR),$(TARGETS)) $(STL_DIR)frame-vertex-foot.stl
+all: default lm8uu
 
-$(STL_DIR)frame-vertex-foot.stl::
-	@echo openscad -m make -o $@ -D \'basefoot=true\' $(SRC_DIR)frame-vertex.scad
+default: $(addprefix $(STL_DIR),$(TARGETS)) $(STL_DIR)frame-vertex-foot.stl
 
-$(addprefix $(STL_DIR),$(TARGETS))::
-	@echo openscad -m make -o $@ $(patsubst %.stl,%.scad,$(SRC_DIR)$(subst $(STL_DIR),,$@))
+lm8uu: $(addprefix $(STL_LM8UU_DIR),$(TARGETS))
+
+$(STL_DIR)frame-vertex-foot.stl:
+	openscad -m make -o $@ -D 'basefoot=true' $(SRC_DIR)frame-vertex.scad
+
+$(addprefix $(STL_DIR),$(TARGETS)):
+	openscad -m make -o $@ $(patsubst %.stl,%.scad,$(SRC_DIR)$(subst $(STL_DIR),,$@))
+	
+$(addprefix $(STL_LM8UU_DIR),$(TARGETS)):
+	openscad -m make -D 'linear=true;lme8uu=false' -o $@ $(patsubst %.stl,%.scad,$(SRC_DIR)$(subst $(STL_LM8UU_DIR),,$@))
+	
+clean:
+	rm -f $(STL_DIR)*.stl
+	rm -f $(STL_LM8UU_DIR)*.stl
+	
+	
+	
+	
