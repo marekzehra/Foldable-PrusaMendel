@@ -28,7 +28,7 @@ all: default lm8uu
 
 default: $(addprefix $(STL_DIR),$(TARGETS)) $(STL_DIR)frame-vertex-foot.stl
 
-lm8uu: $(addprefix $(STL_LM8UU_DIR),$(TARGETS))
+lm8uu: $(addprefix $(STL_LM8UU_DIR),$(TARGETS)) $(STL_LM8UU_DIR)frame-vertex-foot.stl
 
 $(STL_DIR)frame-vertex-foot.stl:
 	openscad -m make -o $@ -D 'basefoot=true' $(SRC_DIR)frame-vertex.scad
@@ -38,6 +38,9 @@ $(addprefix $(STL_DIR),$(TARGETS)):
 	
 $(addprefix $(STL_LM8UU_DIR),$(TARGETS)):
 	openscad -m make -D 'linear=true;lme8uu=false' -o $@ $(patsubst %.stl,%.scad,$(SRC_DIR)$(subst $(STL_LM8UU_DIR),,$@))
+
+$(STL_LM8UU_DIR)frame-vertex-foot.stl: $(STL_DIR)frame-vertex-foot.stl
+	cp $(STL_DIR)frame-vertex-foot.stl $(STL_LM8UU_DIR)frame-vertex-foot.stl
 	
 clean:
 	rm -f $(STL_DIR)*.stl
