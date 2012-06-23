@@ -26,6 +26,9 @@ SRC_DIR=source/
 
 all: default lm8uu
 
+calibration:
+	openscad -m make -o calibration.stl $(SRC_DIR)calibration.scad
+
 default: $(addprefix $(STL_DIR),$(TARGETS)) $(STL_DIR)frame-vertex-foot.stl
 
 lm8uu: $(addprefix $(STL_LM8UU_DIR),$(TARGETS)) $(STL_LM8UU_DIR)frame-vertex-foot.stl
