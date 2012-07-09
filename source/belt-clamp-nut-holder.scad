@@ -15,7 +15,7 @@ include <configuration.scad>
  * @category Printed
  */ 
 
-module beltclamp(){
+module beltclampnut(){
 difference(){
 	union(0){
 translate(v = [0,0,1.5]) cube([18,10,3], center=true);
@@ -29,4 +29,4 @@ translate(v = [-9, 0, -1])polyhole(m3_diameter, 12);
 translate(v = [9, 0, -1]) polyhole(m3_diameter, 12);
 }
 }
-beltclamp();
+beltclampnut();

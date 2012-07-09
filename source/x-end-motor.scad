@@ -21,25 +21,25 @@ corection = 1.17;
  * @using 2 m8nut
  */
 
-
-
-
 use <x-end.scad>
 
+
+module xendmotor(){
 difference (){
 		union ()
 		{
 			mirror() xend(true,linear);
-		
+	
 			//translate(v = [0, 35, 12.5]) 
 			//xend_nema17();
-		
+	
 			translate(v = [0, 0, 0]) positioned_motor_mount();
 		}
 		positioned_motor_mount_holes();
 }
 translate([-5,-30,2])scale([2,1,2]) rotate(a=[90,0,0]) 
 linear_extrude(height = 2, center = true, convexity = 10, twist = -fanrot) import("this-way-up.dxf", layer = "l");
+}
 
 
 // GregFrosts stuff
@@ -199,3 +199,4 @@ function angle(a,b,c) = acos((a*a+b*b-c*c)/(2*a*b));
 
 function rotated(a)=[cos(a),sin(a),0];
 
+xendmotor();

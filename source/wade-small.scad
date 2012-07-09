@@ -36,7 +36,7 @@ module WadesS_double_helix(){
 	//rotate([180,0,-23.5])translate([-10,-10,-18])color([ 100/255, 255/255, 200/255])import_stl("wades_gear.stl");
 
 	circles=0;
-	teeth=9;
+	teeth=11;
 	pitch=268;
 	twist=200;
 	height=25;

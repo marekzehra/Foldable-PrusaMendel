@@ -43,9 +43,9 @@ less_idler_bolt_dist = 0;
 
 
 ////////// RENDER EXTRUDER //////////////////////////////////////////////////////////////
-wade(hotend_mount=groovemount, legacy_mount=false);
+//wade(hotend_mount=groovemount, legacy_mount=false);
 //wade(hotend_mount=reprapfaborg_mount, legacy_mount=false);
-//wade(hotend_mount=jhead_mount, legacy_mount=false);
+wade(hotend_mount=jhead_mount, legacy_mount=false);
 //wade(hotend_mount=arcol_mount, legacy_mount=false);
 //wade(hotend_mount=grrf_peek_mount, legacy_mount=false);
 
@@ -396,9 +396,9 @@ module block_holes(legacy_mount=false){
 
 	translate(motor_mount_translation){
 		translate([-gear_separation,0,0]){
-			rotate([0,180,0])
-			translate([0,0,1])
-			import("wade-large.stl");
+			//rotate([0,180,0])
+			//translate([0,0,1])
+			//import("wade-large.stl");
 
 			// Open the top to remove overhangs and to provide access to the hobbing.
 			translate([-wade_block_width+2,0,9.5])
@@ -462,8 +462,8 @@ module block_holes(legacy_mount=false){
 			}
 
 		}
-%		translate([0,0,-8])
-		import("wade-small.stl");
+//%		//translate([0,0,-8])
+		//import("wade-small.stl");
 	}
 
 	// Idler mounting holes and nut traps.
