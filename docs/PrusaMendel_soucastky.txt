@@ -1,0 +1,33 @@
+součástky
+
+100x M8 matice
+100x M8 podložka
+10x M8x30 široká podložka 
+50x M3x10 šroub
+50x M3x16 šroub
+50x M3x20 šroub
+50x M3x25 šroub
+50x M3x40 šroub
+200x M3 podložka
+100x M3 matice
+4x M3x6 červik (stavěcí šroub 3x6 s imbusem), může být i M3x10, ale musí se zkrátit
+
+50x stahovací pásky
+
+tyče:
+1x 1m M3 závitová tyč
+6x 1m M8 závitová tyč
+3x 1m 8mm hladká tyč
+
+závitové:
+Rod 1: 370mm, 370mm, 210mm, ~50mm 
+Rod 2: 370mm, 370mm, 210mm, ~50mm 
+Rod 3: 370mm, 294mm, 294mm, ~42mm 
+Rod 4: 370mm, 294mm, 294mm, ~42mm 
+Rod 5: 440mm, 440mm, ~120mm
+Rod 6: 440mm
+
+hladké:
+Rod 1: 400mm, 400mm 
+Rod 2: 400mm, 400mm
+Rod 3: 350mm, 350mm
