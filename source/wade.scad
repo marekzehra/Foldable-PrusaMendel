@@ -4,8 +4,8 @@
 // Extruder based on prusa git repo.
 // http://www.thingiverse.com/thing:6713
 
-include<configuration.scad>
-include<jonaskuehling-default.scad>
+include<configuration.scad>;
+include<jonaskuehling-default.scad>;
 
 // Define the hotend_mounting style you want by specifying hotend_mount=style1+style2 etc.
 malcolm_hotend_mount=1;
@@ -45,7 +45,7 @@ less_idler_bolt_dist = 0;
 ////////// RENDER EXTRUDER //////////////////////////////////////////////////////////////
 //wade(hotend_mount=groovemount, legacy_mount=false);
 //wade(hotend_mount=reprapfaborg_mount, legacy_mount=false);
-wade(hotend_mount=jhead_mount, legacy_mount=false);
+//wade(hotend_mount=jhead_mount, legacy_mount=false);
 //wade(hotend_mount=arcol_mount, legacy_mount=false);
 //wade(hotend_mount=grrf_peek_mount, legacy_mount=false);
 

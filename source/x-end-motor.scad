@@ -24,7 +24,7 @@ corection = 1.17;
 use <x-end.scad>
 
 
-module xendmotor(){
+module xendmotor(linear){
 difference (){
 		union ()
 		{
@@ -199,4 +199,4 @@ function angle(a,b,c) = acos((a*a+b*b-c*c)/(2*a*b));
 
 function rotated(a)=[cos(a),sin(a),0];
 
-xendmotor();
+xendmotor(linear);

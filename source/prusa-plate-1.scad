@@ -7,7 +7,7 @@ use<wade.scad>
 
 translate([34,140,0]) rotate([0,0,270]) endstop();
 translate([168,123,0]) rotate([0,0,90]) barclamp();
-translate([71,120,0]) rotate([0,0,1890]) xendmotor();
+translate([71,120,0]) rotate([0,0,1890]) xendmotor(linear);
 translate([135,120,0]) rotate([0,0,270]) xendidler(linear);
 translate([125,83,0]) rotate([0,0,180]) wade(hotend_mount=256, legacy_mount=false);
 translate([44,92,16.21]) rotate([0,-90,180]) wadeidler();

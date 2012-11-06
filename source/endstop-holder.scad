@@ -20,7 +20,7 @@ include <configuration.scad>
  */
 module endstop(){
 outer_diameter = m8_diameter/2+3.3;
-screw_hole_spacing = 20;
+screw_hole_spacing = 9;
 opening_size = m8_diameter-1.5; //openingsize
 
 difference(){
@@ -29,7 +29,7 @@ difference(){
 
 		translate([outer_diameter, outer_diameter, 0]) cylinder(h =10, r = outer_diameter, $fn = 20);
 		translate([outer_diameter, 0, 0]) cube([15.5,outer_diameter*2,10]);
-		translate([-27, 0, 0]) cube([35, 4, 10]);
+		translate([-(screw_hole_spacing + 10), 0, 0]) cube([screw_hole_spacing + 20, 4, 10]);
 		translate([17, 17.5, 5]) rotate([90, 0, 0]) #cylinder(h =5, r = 5.77, $fn = 6);
 	}
 
