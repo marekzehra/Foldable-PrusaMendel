@@ -30,7 +30,7 @@ extra_gear_separation=2;
 
 // Nut wrench sizes ISO 4032
 m3_wrench = 5.5;
-m4_wrench = 7;
+m4_wrench = 5.7;
 
 // Adjust for deeper groove in hobbed bolt, so that idler is still vertical when tightened
 // Values like 0.5 to 1 should work, the more, the closer the idler will move to the bolt
@@ -45,7 +45,7 @@ less_idler_bolt_dist = 0;
 ////////// RENDER EXTRUDER //////////////////////////////////////////////////////////////
 //wade(hotend_mount=groovemount, legacy_mount=false);
 //wade(hotend_mount=reprapfaborg_mount, legacy_mount=false);
-wade(hotend_mount=jhead_mount, legacy_mount=true);
+wade(hotend_mount=jhead_mount, legacy_mount=false);
 //wade(hotend_mount=arcol_mount, legacy_mount=false);
 //wade(hotend_mount=grrf_peek_mount, legacy_mount=false);
 
@@ -199,7 +199,7 @@ idler_short_side=wade_block_depth-2;
 idler_hinge_r=m3_diameter/2+3.5;
 idler_hinge_width=6.5;
 idler_end_length=(idler_height-2)+5;
-idler_mounting_hole_diameter=m4_diameter+0.25;
+idler_mounting_hole_diameter=m3_diameter+0.25;
 idler_mounting_hole_elongation=0.9;
 idler_long_top=idler_mounting_hole_up+idler_mounting_hole_diameter/2+idler_mounting_hole_elongation+2.5;
 idler_long_bottom=idler_fulcrum_offset;
@@ -487,19 +487,19 @@ module block_holes(legacy_mount=false){
 			cube([m4_wrench+0.4,10,idler_nut_thickness],center=true);
 
 			// screw holes 30°
-			for(tilt=[1:6]){
-				translate([0,0,(wade_block_width-idler_nut_trap_depth+idler_nut_thickness/2)])
-				rotate([tilt*5,0,0])
-				rotate([0,0,30])
-				translate([0,0,-28])
-				cylinder(r=idler_mounting_hole_diameter/2,h=wade_block_depth+10,$fn=6);
-			}
+			//for(tilt=[1:6]){
+			//	translate([0,0,(wade_block_width-idler_nut_trap_depth+idler_nut_thickness/2)])
+			//	rotate([tilt*5,0,0])
+			//	rotate([0,0,30])
+			//	translate([0,0,-28])
+			//	cylinder(r=idler_mounting_hole_diameter/2,h=wade_block_depth+10,$fn=6);
+			//}
 
 			// nut traps 30°
-			translate([0,0,wade_block_width-idler_nut_trap_depth+idler_nut_thickness/2])
-			for(tilt_nut=[1:6])
-				rotate([tilt_nut*5,0,0])
-				rotate([0,0,30])
+			//translate([0,0,wade_block_width-idler_nut_trap_depth+idler_nut_thickness/2])
+			//for(tilt_nut=[1:6])
+			//	rotate([tilt_nut*5,0,0])
+			//	rotate([0,0,30])
 //				cylinder(r=m4_nut_diameter/2,h=idler_nut_thickness,$fn=6);
 				nut_trap(m4_wrench,idler_nut_thickness);
 				
@@ -641,9 +641,9 @@ module wadeidler(){
 				cylinder(r=idler_mounting_hole_diameter/2,h=idler_height+2,$fn=16);
 				translate([0,idler_mounting_hole_elongation+0.8,0])
 				cylinder(r=idler_mounting_hole_diameter/2,h=idler_height+2,$fn=16);
-				translate([-idler_mounting_hole_diameter/2,0,0])
-				cube([idler_mounting_hole_diameter,idler_mounting_hole_elongation+7,
-					idler_height+2]);
+				//translate([-idler_mounting_hole_diameter/2,0,0])
+				//cube([idler_mounting_hole_diameter,idler_mounting_hole_elongation+7,
+				//	idler_height+2]);
 			}
 
 			// Rounded corners.

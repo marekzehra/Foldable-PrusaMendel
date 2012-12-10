@@ -1,76 +1,50 @@
-// Wade's Extruder Gears using Parametric Involute Bevel and Spur Gears by GregFrost
-// by Nicholas C. Lewis (A RepRap Breeding Program)
-//
-// It is licensed under the Creative Commons - GNU GPL license.
-// © 2010 by Nicholas C. Lewis
-// http://www.thingiverse.com/thing:4305
+// Greg's Wade Gears
 
-use <inc/mendel_misc.inc>
+// PRUSA Mendel 
+// GNU GPL v3
+// Josef Průša
+// josefprusa@me.com
+// prusadjs.cz
+// http://www.reprap.org/wiki/Prusa_Mendel
+// http://github.com/prusajr/PrusaMendel
+
+include <configuration.scad>
 use <inc/parametric_involute_gear_v5.0.scad>
 
-//WadesL(); //this module call will make the large gear
-//WadesS();  //this module call will make the small gear
-//WadeL_double_helix();
-rotate([180,0,0])WadesS_double_helix();
+translate([15,60,0]) 
+WadesS(); //this module call will make the small gear
 
+
+/**
+ * @id small-gear
+ * @name Small extruder gear
+ * @category Printed
+ * @using 1 m3nut
+ * @using 1 m3xgrubscrew
+ * @step Insert nut into cavity in printed gear.
+ * @step Tighten the grub screw a bit, just to hold in place.
+ */
 
 module WadesS(){
-	//small WADE's Gear
-	//rotate([180,0,-23.5])translate([-10,-10,-18])color([ 100/255, 255/255, 200/255])import_stl("wades_gear.stl");
 	difference(){
-		gear (number_of_teeth=11,
+translate([0,0,18]) mirror([ 0, 0, 1 ]) gear (number_of_teeth=10,
 			circular_pitch=268,
 			gear_thickness = 9,
 			rim_thickness = 9,
 			hub_thickness = 18,
-			hub_diameter = 20,
-			bore_diameter = 5,
-			circles=0,
-			twist = 0);
-		translate([0,-5,16])cube([5.5,2.3,9],center = true);
-		translate([0,0,14])rotate([0,90,-90])cylinder(r=1.7,h=20);
+			hub_diameter = 18,
+			bore_diameter = 5.25,
+			circles=0);
+		translate([0,20,4])rotate([90,0,0])
+	union()
+	{
+		//entrance
+		translate([0,-3,15]) cube([5.5,5,3],center=true);
+		//nut
+		translate([0,0,13.6]) rotate([0,0,30]) nut(5.5, 3, false);
+		//grub hole
+		translate([0,0,9]) cylinder(r=m3_diameter/2,h=10, $fn=15);
+	}
 	}
 }
-module WadesS_double_helix(){
-	//small WADE's Gear
-	//rotate([180,0,-23.5])translate([-10,-10,-18])color([ 100/255, 255/255, 200/255])import_stl("wades_gear.stl");
 
-	circles=0;
-	teeth=11;
-	pitch=268;
-	twist=200;
-	height=25;
-	pressure_angle=30;
-
-	difference(){
-		union(){
-		gear (number_of_teeth=teeth,
-			circular_pitch=pitch,
-			pressure_angle=pressure_angle,
-			clearance = 0.2,
-			gear_thickness =  height/4,
-			rim_thickness = height/4,
-			rim_width = 5,
-			hub_thickness = height/2*1.2,
-			hub_diameter = 20,
-			bore_diameter = 5,
-			circles=circles,
-			twist = twist/teeth);
-		mirror([0,0,1])
-		gear (number_of_teeth=teeth,
-			circular_pitch=pitch,
-			pressure_angle=pressure_angle,
-			clearance = 0.2,
-			gear_thickness =  height/4*1.2,
-			rim_thickness =  height/4,
-			rim_width = 5,
-			hub_thickness = height/4,
-			hub_diameter=20,
-			bore_diameter=5,
-			circles=circles,
-			twist=twist/teeth);
-		}
-		translate([0,-5,12])cube([5.5,2.3,9],center = true);
-		translate([0,0,11])rotate([0,90,-90])cylinder(r=1.7,h=20);
-	}
-}
