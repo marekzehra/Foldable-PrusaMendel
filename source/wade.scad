@@ -45,7 +45,7 @@ less_idler_bolt_dist = 0;
 ////////// RENDER EXTRUDER //////////////////////////////////////////////////////////////
 //wade(hotend_mount=groovemount, legacy_mount=false);
 //wade(hotend_mount=reprapfaborg_mount, legacy_mount=false);
-//wade(hotend_mount=jhead_mount, legacy_mount=false);
+wade(hotend_mount=jhead_mount, legacy_mount=true);
 //wade(hotend_mount=arcol_mount, legacy_mount=false);
 //wade(hotend_mount=grrf_peek_mount, legacy_mount=false);
 

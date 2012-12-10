@@ -1,0 +1,30 @@
+M8 matice				100
+M8 podložka				120
+M8x30 široká podložka	10
+M3x10 šroub				50
+M3x16 šroub				50
+M3x20 šroub				50
+M3x25 šroub				50
+M3x40 šroub				50
+M3x50 šroub				20
+M3 podložka				200
+M3 matice				100
+M3x10 červik (3x6 stavěcí šroub s imbusem)	2
+M8 závitová tyč (1m)	6
+M3 závitová tyč (1m)	1
+M8 hladá tyč (1m)		3
+
+M8x60 šroub s šestihranem a plochou alespoň 3O	1
+
+závitové:
+Rod 1: 370mm, 370mm, 210mm, ~50mm 
+Rod 2: 370mm, 370mm, 210mm, ~50mm 
+Rod 3: 370mm, 294mm, 294mm, ~42mm 
+Rod 4: 370mm, 294mm, 294mm, ~42mm 
+Rod 5: 440mm, 440mm, ~120mm
+Rod 6: 440mm
+
+hladké:
+Rod 1: 420mm, 420mm 
+Rod 2: 400mm, 400mm
+Rod 3: 350mm, 350mm

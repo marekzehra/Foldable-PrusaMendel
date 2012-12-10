@@ -18,7 +18,7 @@ include <metric.scad>;
 // CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM CUSTOM
 
 thin_wall = 3;
-fanrot = 0;
+fanrot = 1;
 
 
 // Linear bearing version
