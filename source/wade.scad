@@ -23,14 +23,14 @@ reprapfaborg_mount=512; // http://reprap-fab.org hotend with 10mm PEEK insulator
 //e.g. wade(hotend_mount=groovemount+peek_reprapsource_mount);
 
 //Set motor- and bolt-elevation for additional clearance when using e.g. 9/47 gears like in http://www.thingiverse.com/thing:11152
-elevation=4;
+elevation=8;
 
 //Set extra gear separation when using slightly bigger non-standard gears like 9/47 herringbone gears
-extra_gear_separation=2;
+extra_gear_separation=0;
 
 // Nut wrench sizes ISO 4032
 m3_wrench = 5.5;
-m4_wrench = 5.7;
+m4_wrench = 5.5;
 
 // Adjust for deeper groove in hobbed bolt, so that idler is still vertical when tightened
 // Values like 0.5 to 1 should work, the more, the closer the idler will move to the bolt

@@ -20,7 +20,7 @@ translate([49,115,0]) rotate([0,0,90]) beltclamp();
 translate([123,158,0]) rotate([0,0,180]) ybushing(linear);
 translate([28,145,0]) rotate([0,0,-65]) rodclamp();
 translate([123,72,0]) rotate([0,0,180]) ybushing(linear);
-translate([66,115,15]) rotate([180,0,0]) WadesS_double_helix();
+translate([66,115,0]) rotate([0,0,0]) WadesS();
 translate([20,116,0]) rotate([0,0,180]) rodclamp();
 translate([85,159,0]) rotate([0,0,180]) beltclamp();
 translate([149,132,0]) rotate([0,0,70]) union(){
