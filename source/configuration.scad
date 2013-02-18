@@ -26,7 +26,8 @@ linear = false;
 // set false for LM-8UU, true for LM-E-8UU (ignore if linear is set to false)
 lme8uu = false;
 
-
+// change height of endstops for more stable holding
+doubled_endstops = true;
 
 // CHANGE ONLY THE STUFF YOU KNOW
 // IT WILL REPLACE DEFAULT SETTING

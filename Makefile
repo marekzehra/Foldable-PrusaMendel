@@ -7,7 +7,6 @@ TARGETS = \
 	endstop-holder.stl \
 	frame-vertex.stl \
 	printable-bushing-lm8uu.stl \
-	pulley.stl \
 	rod-clamp.stl \
 	sanguinololu-holder.stl \
 	wade.stl \

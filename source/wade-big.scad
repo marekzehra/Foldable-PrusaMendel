@@ -41,14 +41,14 @@ module WadesL(){
 	hole_size=7.3;
 	hole_offset=18.5;
 	gear_thickness=5;
-	nut_trap_depth=3;
+	nut_trap_depth=4;
 	nut_trap_thickness=6;
 
 	difference(){
 		gear (number_of_teeth=43,
 			circular_pitch=268,
 			gear_thickness =gear_thickness,
-			rim_thickness = 5,
+			rim_thickness = gear_thickness+1,
 			rim_width = 3,
 			hub_thickness = nut_trap_thickness+nut_trap_depth,
 			hub_diameter = 22,
