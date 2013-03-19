@@ -8,6 +8,7 @@ include<configuration.scad>;
 include<jonaskuehling-default.scad>;
 
 // Define the hotend_mounting style you want by specifying hotend_mount=style1+style2 etc.
+
 malcolm_hotend_mount=1;
 groovemount=2;
 peek_reprapsource_mount=4;
@@ -23,14 +24,15 @@ reprapfaborg_mount=512; // http://reprap-fab.org hotend with 10mm PEEK insulator
 //e.g. wade(hotend_mount=groovemount+peek_reprapsource_mount);
 
 //Set motor- and bolt-elevation for additional clearance when using e.g. 9/47 gears like in http://www.thingiverse.com/thing:11152
-elevation=8;
+elevation=0;
 
 //Set extra gear separation when using slightly bigger non-standard gears like 9/47 herringbone gears
 extra_gear_separation=0;
 
 // Nut wrench sizes ISO 4032
-m3_wrench = 5.5;
-m4_wrench = 5.5;
+m3_wrench = 5.3;
+m4_wrench = 5.3;
+
 
 // Adjust for deeper groove in hobbed bolt, so that idler is still vertical when tightened
 // Values like 0.5 to 1 should work, the more, the closer the idler will move to the bolt
@@ -45,10 +47,10 @@ less_idler_bolt_dist = 0;
 ////////// RENDER EXTRUDER //////////////////////////////////////////////////////////////
 //wade(hotend_mount=groovemount, legacy_mount=false);
 //wade(hotend_mount=reprapfaborg_mount, legacy_mount=false);
-wade(hotend_mount=jhead_mount, legacy_mount=false);
+//wade(hotend_mount=jhead_mount, legacy_mount=false);
 //wade(hotend_mount=arcol_mount, legacy_mount=false);
 //wade(hotend_mount=grrf_peek_mount, legacy_mount=false);
-
+wade(legacy_mount=false);
 
 ////////// RENDER BEARING WASHER ///////////////////////////////////////////////////
 //translate([-15,45,0])								// POSITIONING
@@ -451,7 +453,7 @@ module block_holes(legacy_mount=false){
 					-motor_mount_translation[1]-1,wade_block_depth/2])
 				rotate([-90,0,0])
 				rotate(360/16)
-				cylinder(r=m4_diameter/2,h=base_thickness+2,$fn=8);	
+				cylinder(r=m3_diameter/2,h=base_thickness+2,$fn=8);	
 	
 				translate([-filament_feed_hole_offset+25*((mount<1)?1:-1),
 					-motor_mount_translation[1]+base_thickness/2,
