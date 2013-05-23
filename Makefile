@@ -17,11 +17,7 @@ TARGETS = \
 	x-end-motor.stl \
 	y-bushing.stl \
 	ybrac-t.stl \
-	z-motor-mount.stl \
-	prusa-plate-1.stl \
-	prusa-plate-2.stl \
-	prusa-plate-3.stl \
-	prusa-plate-4.stl
+	z-motor-mount.stl
 
 STL_DIR=metric-prusa/
 STL_LM8UU_DIR=metric-prusa-lm8uu/
