@@ -2,7 +2,7 @@
 // Z motor bracket hinge
 // Used for connecting Z motor mount to rod
 // GNU GPL v2
-// Design by Marek Zehra
+// Design by Marek Žehra
 // marek@zehra.cz
 // http://github.com/marekzehra/Foldable-PrusaMendel
 include <configuration.scad>
@@ -11,7 +11,7 @@ zmotorbrackethinge();
 
 
 module zmotorbrackethinge() {
-	width = 28;
+	width = 25;
 
 	difference(){
 		union(){

@@ -5,7 +5,8 @@ TARGETS = \
 	belt-clamp.stl \
 	coupling.stl \
 	endstop-holder.stl \
-	frame-vertex.stl \
+	frame-vertex-foot.stl \
+	frame-vertex-foot-hinge.stl \
 	printable-bushing-lm8uu.stl \
 	rod-clamp.stl \
 	sanguinololu-holder.stl \
@@ -31,7 +32,6 @@ calibration:
 default: $(addprefix $(STL_DIR),$(TARGETS)) $(STL_DIR)frame-vertex-foot.stl
 
 lm8uu: $(addprefix $(STL_LM8UU_DIR),$(TARGETS)) \
-	$(STL_LM8UU_DIR)frame-vertex-foot.stl \
 	$(STL_LM8UU_DIR)z-motor-mount-left.stl \
 	$(STL_LM8UU_DIR)z-motor-mount-right.stl
 
@@ -43,9 +43,6 @@ lm8uu: $(addprefix $(STL_LM8UU_DIR),$(TARGETS)) \
 	
 $(addprefix $(STL_LM8UU_DIR),$(TARGETS)):
 	openscad -m make -D 'linear=true;lme8uu=false' -o $@ $(patsubst %.stl,%.scad,$(SRC_DIR)$(subst $(STL_LM8UU_DIR),,$@))
-
-$(STL_LM8UU_DIR)frame-vertex-foot.stl:
-	openscad -m make -o $@ -D 'basefoot=true' $(SRC_DIR)frame-vertex.scad
 	
 $(STL_LM8UU_DIR)z-motor-mount-left.stl:
 	openscad -m make -o $@ -D 'side="left"' $(SRC_DIR)z-motor-mount.scad

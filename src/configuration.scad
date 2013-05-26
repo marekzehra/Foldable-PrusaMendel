@@ -48,7 +48,7 @@ smooth_bar_diameter_horizontal = 8.7;
 // m4_nut_diameter = 0;
 
 // m3_diameter = 0;
-// m3_nut_diameter = 0;
+m3_nut_diameter = 5.8;
 
 // Bushing holder
 

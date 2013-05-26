@@ -4,12 +4,13 @@
 // Frame vertex
 // GNU GPL v3
 // Greg Frost
+// Edited by Marek Žehra
 // http://www.reprap.org/wiki/Prusa_Mendel
 // http://github.com/prusajr/PrusaMendel
 
 
 include <configuration.scad>
-basefoot=false;
+basefoot=true;
 
 vertex(with_foot=basefoot);
 
@@ -92,9 +93,8 @@ module vertex(with_foot=basefoot)
 	{
 		union ()
 		{
-			for (hole=[(with_foot?1:0):1])
-			rotate(hole*60)
-			translate([hole_separation,end_round_translation-hole*2*end_round_translation,0])
+			rotate(60)
+			translate([hole_separation,end_round_translation-2*end_round_translation,0])
 			scale([1,(vertex_end_minor_d+2*end_round_translation)/vertex_end_major_d,1])
 			cylinder(r=vertex_end_major_d/2,h=vfvertex_height); 
 
@@ -113,41 +113,26 @@ module vertex(with_foot=basefoot)
 				// The inner curve.
 				barbell(peg3,peg4,inner_peg_r,inner_peg_r,20,200);
 
-				if (with_foot)
-				{
-					// Curves for the feet
-					barbell(a1,a3,a1_r,a3_r,200,20);
-					barbell(a2,a4,a2_r,a4_r,20,200);
+				// Curves for the feet
+				barbell(a1,a3,a1_r,a3_r,200,20);
+				barbell(a2,a4,a2_r,a4_r,20,200);
 
-					// The flat bit on the bottom of the foot.
-					polygon(points=[a3+[0,-a3_r],a4+[0,-a4_r],(a3+a4)/2+[0,5]],
-						paths=[[0,1,2]]);
-				}
+				// The flat bit on the bottom of the foot.
+				polygon(points=[a3+[0,-a3_r],a4+[0,-a4_r],(a3+a4)/2+[0,5]],
+				paths=[[0,1,2]]);
 			}
 		}
 
-		for (hole=[0:1])
-		rotate(hole*60)
+		for (hole=[0:2])
+		rotate(hole*30)
 		translate([hole_separation,0,-1])
 		cylinder(h=vfvertex_height+2,r=(threaded_rod_diameter/2)); 
 
-		for (block=[0:1])
-		rotate(block*60)
 		translate([hole_separation-vertex_end_major_d/2-1,
-			vertex_horizontal_hole_offset-2*block*vertex_horizontal_hole_offset,
+			vertex_horizontal_hole_offset,
 			vfvertex_height/2])
 		teardrop(r=threaded_rod_diameter/2,h=vertex_end_major_d+2);
-		if (with_foot){
-		translate([31+18.5,20-9,vfvertex_height]) 
-		linear_extrude(height = 2, center = true, convexity = 10, twist = -fanrot)import("this-way-up.dxf", layer = "0");
-		translate([31+18.5,20-9,0]) 
-		linear_extrude(height = 2, center = true, convexity = 10, twist = -fanrot)import("this-way-up.dxf", layer = "0");
-		}else{
-			translate([31+18.5+15,20-9+16.5,vfvertex_height]) rotate([0,0,30+90]) 
-			linear_extrude(height = 2, center = true, convexity = 10, twist = -fanrot)import("this-way-up.dxf", layer = "0");
-			translate([31+18.5+15,20-9+16.5,0]) rotate([0,0,30+90]) 
-			linear_extrude(height = 2, center = true, convexity = 10, twist = -fanrot)import("this-way-up.dxf", layer = "0");
-		}
+		
 	}
 }
 

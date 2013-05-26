@@ -3,7 +3,7 @@
 // Used for mounting Z motors
 // GNU GPL v2
 // Based on design by Josef Prusa
-// Redesigned by Marek Zehra
+// Redesigned by Marek Žehra
 // marek@zehra.cz
 // http://github.com/marekzehra/Foldable-PrusaMendel
 include <configuration.scad>
@@ -50,10 +50,10 @@ difference(){
 
 // Joint hole
 if (side == "left" || side == "right") {
-	translate([0,((side == "left") ? -1 : 1) * rod_distance/2 + ((side == "left") ? -1 : 1) * 2,23.5])
+	translate([0,((side == "left") ? -1 : 1) * rod_distance/2 + ((side == "left") ? -1 : 1) * 2,25/2 + 9.5])
 	hull(){
-			cube(size = [width + 2,20,28], center = true);
-			translate([0,((side == "left") ? -1 : 1) * 11,(38-28)/2])cube(size = [width + 2,1,38], center = true);
+			cube(size = [width + 2,20,25], center = true);
+			translate([0,((side == "left") ? -1 : 1) * 11,(38-25)/2])cube(size = [width + 2,1,38], center = true);
 		}
 	
 }
@@ -73,11 +73,11 @@ if (side == "left" || side == "right") {
 		}
 		translate(v=[-2.3,0,-2.8])cube(size = [46,43,width - 3], center = true);
 		translate(v=[0,0,-10]) polyhole(26,width + 4);
-		translate(v=[30,0,-10]) cylinder(h = width+2, r=4.2);
-		translate(v=[16,7,-1]) rotate(a=[0,90,0]) polyhole(m3_diameter,15);
-		translate(v=[16,-7,-1]) rotate(a=[0,90,0]) polyhole(m3_diameter,15);
-		translate(v=[0,7,-1]) rotate(a=[0,90,0]) rotate(a=[0,0,30]) nut(m3_nut_diameter, 24, true);
-		translate(v=[0,-7,-1]) rotate(a=[0,90,0]) rotate(a=[0,0,30]) nut(m3_nut_diameter, 24, true);
+		translate(v=[31,0,-9]) cylinder(h = width+2, r=4.2);
+		translate(v=[16,7,0]) rotate(a=[0,90,0]) polyhole(m3_diameter,15);
+		translate(v=[16,-7,0]) rotate(a=[0,90,0]) polyhole(m3_diameter,15);
+		translate(v=[0,7,0]) rotate(a=[0,90,0]) rotate(a=[0,0,30]) nut(m3_nut_diameter, 24, true);
+		translate(v=[0,-7,0]) rotate(a=[0,90,0]) rotate(a=[0,0,30]) nut(m3_nut_diameter, 24, true);
 	}
 }
 }
